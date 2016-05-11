@@ -1,4 +1,5 @@
 #include <sourcemod>
+#include <tf2_stocks>
 public OnPluginStart()
 {
 	RegAdminCmd("sm_jail", Command_Jail, ADMFLAG_SLAY|ADMFLAG_BAN|ADMFLAG_CHEATS, "sm_jail <#userid|name>");
@@ -10,9 +11,9 @@ public Action:Command_Jail(client, args)
 		ReplyToCommand(client, "[-NAVY-] Usage: sm_jail <#userid|name>");
 		return Plugin_Handled;
 	}
-	decl len, next_len;decl String:Arguments[256];
+	decl String:Arguments[256];
 	GetCmdArgString(Arguments, sizeof(Arguments));
-	decl String:arg[65];len = BreakString(Arguments, arg, sizeof(arg));
+	decl String:arg[65];
 	new target = FindTarget(client, arg, true);
 	if (target == -1)
 	{
